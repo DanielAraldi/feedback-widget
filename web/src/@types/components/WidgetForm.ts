@@ -6,5 +6,10 @@ export interface FeedbackTypeStepProps {
 
 export interface FeedbackContentStepProps {
   feedbackType: FeedbackTypeKey;
+  onFeedbackSent(): void;
+  onFeedbackRestartRequested(): void;
+}
+
+export interface FeedbackSuccessStepProps {
   onFeedbackRestartRequested(): void;
 }

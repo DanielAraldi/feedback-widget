@@ -5,7 +5,7 @@ import { FeedbackContentStepProps } from '../../../@types';
 import { FEEDBACK_TYPES } from '../../../constants';
 
 export function FeedbackContentStep(props: FeedbackContentStepProps) {
-  const { feedbackType, onFeedbackRestartRequested } = props;
+  const { feedbackType, onFeedbackSent, onFeedbackRestartRequested } = props;
 
   const [comment, setComment] = useState<string>('');
   const [screenshot, setScreenshot] = useState<string>('');
@@ -14,6 +14,7 @@ export function FeedbackContentStep(props: FeedbackContentStepProps) {
 
   function handleSubmitFeedback(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
+    onFeedbackSent();
   }
 
   return (
