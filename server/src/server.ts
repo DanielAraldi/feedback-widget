@@ -1,9 +1,11 @@
-import dotenv from 'dotenv';
 import express from 'express';
+import { bodyJson, envs } from './config';
+import { setupRoutes } from './routes';
 
-dotenv.config();
 const app = express();
+const { port } = envs;
 
-const port = process.env.PORT || 3333;
+bodyJson(app);
+setupRoutes(app);
 
-app.listen(port, () => console.log('HTTP server running!'));
+app.listen(port, () => console.log('Feedback Widget server is running!'));
