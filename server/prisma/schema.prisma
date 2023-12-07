@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// If @@map doens't declare the modal name to be Feedback
+model Feedback {
+  id String @id @default(uuid())
+
+  type       String // Or @db.String(256)
+  comment    String
+  screenshot String? // When the field it have an "?" it's nullable
+  createdAt  DateTime
+
+  @@map("feedbacks")
+}
