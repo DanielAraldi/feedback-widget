@@ -1,4 +1,4 @@
-type SubmitFeedbackType = 'BUG' | 'IDEA' | 'OTHER';
+export type SubmitFeedbackType = 'BUG' | 'IDEA' | 'OTHER';
 
 export interface SubmitFeedbackUseCaseRequest {
   type: SubmitFeedbackType;
