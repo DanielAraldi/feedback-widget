@@ -1,10 +1,11 @@
 import express from 'express';
-import { bodyJson, envs } from './config';
+import { bodyJson, envs, setupCors } from './config';
 import { setupRoutes } from './routes';
 
 const app = express();
 const { port } = envs;
 
+setupCors(app);
 bodyJson(app);
 setupRoutes(app);
 
