@@ -1,7 +1,9 @@
-import { Express } from 'express';
+import { Router } from 'express';
 import { createTransport } from 'nodemailer';
-import { prisma } from '../prisma';
 import { envs } from '../config';
+import { SubmitFeedbackUseCase } from '../usecases';
+import { PrismaFeedbacksRepository } from '../repositories';
+import { NodemailerAdapter } from '../adapters';
 
 const { toMail, hostMail, passwordMail, portMail, userMail } = envs;
 
@@ -14,31 +16,34 @@ const transport = createTransport({
   },
 });
 
-export function setupRoutes(app: Express): void {
-  app.post('/feedbacks', async (request, response): Promise<void> => {
-    const { type, comment, screenshot } = request.body;
+export function feedbackRoutes(router: Router): void {
+  router.post('/feedbacks', async (request, response): Promise<void> => {
+    try {
+      const prismaFeedbacksRepository = new PrismaFeedbacksRepository();
+      const nodemailerAdapter = new NodemailerAdapter();
 
-    const { id } = await prisma.feedback.create({
-      data: {
-        type,
-        comment,
-        screenshot,
-        createdAt: new Date(),
-      },
-    });
+      const submitFeedbackUseCase = new SubmitFeedbackUseCase(
+        prismaFeedbacksRepository,
+        nodemailerAdapter
+      );
 
-    await transport.sendMail({
-      from: 'Equipe Feedget <oi@feedget.com>',
-      to: `Daniel Sansão Araldi <${toMail}>`,
-      subject: 'Novo feedback',
-      html: [
-        '<div style="font-family: sans-serif; font-size: 16px; color: #111;">',
-        `<p>Tipo do feedback: ${type}</p>`,
-        `<p>Comentário: ${comment}</p>`,
-        '</div>',
-      ].join('\n'),
-    });
+      await submitFeedbackUseCase.execute(request.body);
 
-    response.status(201).json({ id });
+      response.status(201).send();
+    } catch (error) {
+      response.status(500).json({ error });
+    }
+
+    // await transport.sendMail({
+    //   from: 'Equipe Feedget <oi@feedget.com>',
+    //   to: `Daniel Sansão Araldi <${toMail}>`,
+    //   subject: 'Novo feedback',
+    //   html: [
+    //     '<div style="font-family: sans-serif; font-size: 16px; color: #111;">',
+    //     `<p>Tipo do feedback: ${type}</p>`,
+    //     `<p>Comentário: ${comment}</p>`,
+    //     '</div>',
+    //   ].join('\n'),
+    // });
   });
 }
