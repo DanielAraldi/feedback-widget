@@ -11,6 +11,8 @@ export const theme = {
     text_on_brand_color: '#FFFFFF',
 
     stroke: '#52525B',
+
+    transparent: 'transparent',
   },
 
   fonts: {
