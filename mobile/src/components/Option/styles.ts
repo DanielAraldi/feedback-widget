@@ -6,23 +6,30 @@ const { colors, fonts } = theme;
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-  },
-
-  options: {
-    flexDirection: 'row',
-
-    width: '100%',
+    width: 104,
+    height: 112,
 
     justifyContent: 'center',
+    alignItems: 'center',
 
-    marginBottom: 48,
+    marginHorizontal: 8,
+
+    padding: 8,
+
+    backgroundColor: colors.surfaceSecondary,
+
+    borderRadius: 8,
+  },
+
+  image: {
+    width: 40,
+    height: 40,
   },
 
   title: {
-    marginBottom: 32,
+    marginTop: 8,
 
-    fontSize: 20,
+    fontSize: 14,
     fontFamily: fonts.medium,
     color: colors.textPrimary,
   },
