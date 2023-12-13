@@ -5,6 +5,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { theme } from '../../config';
 import { styles } from './styles';
 import { useRef } from 'react';
+import { Options } from '../Options';
 
 export function Widget() {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -37,7 +38,7 @@ export function Widget() {
         backgroundStyle={styles.modal}
         handleIndicatorStyle={styles.indicator}
       >
-        <></>
+        <Options />
       </BottomSheet>
     </>
   );
