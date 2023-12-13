@@ -12,6 +12,7 @@ import {
 import { Widget } from './src/components';
 import { theme } from './src/config';
 import { useEffect } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const { colors } = theme;
 
@@ -34,20 +35,26 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar
-        style='light'
-        backgroundColor={colors.transparent}
-        translucent
-      />
+    <GestureHandlerRootView style={styles.container}>
+      <SafeAreaView style={styles.content}>
+        <StatusBar
+          style='light'
+          backgroundColor={colors.transparent}
+          translucent
+        />
 
-      <Widget />
-    </SafeAreaView>
+        <Widget />
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+
+  content: {
     flex: 1,
 
     backgroundColor: colors.background,

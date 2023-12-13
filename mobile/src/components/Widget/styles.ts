@@ -22,4 +22,16 @@ export const styles = StyleSheet.create({
 
     backgroundColor: colors.brand,
   },
+
+  modal: {
+    paddingBottom: getBottomSpace(),
+
+    backgroundColor: colors.surfacePrimary,
+  },
+
+  indicator: {
+    width: 56,
+
+    backgroundColor: colors.textPrimary,
+  },
 });
