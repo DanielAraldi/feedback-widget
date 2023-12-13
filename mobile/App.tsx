@@ -22,7 +22,7 @@ export default function App() {
   });
 
   async function hiddenSplash(): Promise<void> {
-    SplashScreen.hideAsync();
+    await SplashScreen.hideAsync();
   }
 
   useEffect(() => {

@@ -2,16 +2,12 @@ export const theme = {
   colors: {
     brand: '#8257E5',
     background: '#09090A',
-
-    surface_primary: '#18181B',
-    surface_secondary: '#27272A',
-
-    text_primary: '#F4F4F5',
-    text_secondary: '#A1A1AA',
-    text_on_brand_color: '#FFFFFF',
-
+    surfacePrimary: '#18181B',
+    surfaceSecondary: '#27272A',
+    textPrimary: '#F4F4F5',
+    textSecondary: '#A1A1AA',
+    textOnBrandColor: '#FFFFFF',
     stroke: '#52525B',
-
     transparent: 'transparent',
   },
 
