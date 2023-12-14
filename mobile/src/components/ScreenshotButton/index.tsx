@@ -12,7 +12,11 @@ export function ScreenshotButton(props: ScreenshotButtonProps) {
 
   const renderScreenshot: JSX.Element = screenshot ? (
     <View>
-      <Image style={styles.image} source={{ uri: screenshot }} />
+      <Image
+        style={styles.image}
+        source={{ uri: screenshot }}
+        resizeMode='cover'
+      />
 
       <Trash
         weight='fill'
@@ -26,7 +30,7 @@ export function ScreenshotButton(props: ScreenshotButtonProps) {
   );
 
   async function handleOnPress(): Promise<void> {
-    if (screenshot && onRemoveShot) await onRemoveShot();
+    if (screenshot && onRemoveShot) onRemoveShot();
     else if (onTakeShot) await onTakeShot();
   }
 
