@@ -10,8 +10,10 @@ import {
 import { ChatTeardropDots } from 'phosphor-react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 
-import { theme } from '../../config';
 import { Form } from '../Form';
+import { Options } from '../Options';
+import { Success } from '../Success';
+import { theme } from '../../config';
 import { styles } from './styles';
 
 export function Widget() {
@@ -31,7 +33,7 @@ export function Widget() {
       <TouchableNativeFeedback onPress={Keyboard.dismiss}>
         <View style={styles.content}>
           <TouchableOpacity
-            activeOpacity={0.85}
+            activeOpacity={0.5}
             style={styles.button}
             onPress={handleOpen}
           >
