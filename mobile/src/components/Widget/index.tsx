@@ -46,6 +46,7 @@ export function Widget() {
 
   function handleOpen(): void {
     if (bottomSheetRef.current) {
+      handleRestartFeedback();
       bottomSheetRef.current.expand();
     }
   }
