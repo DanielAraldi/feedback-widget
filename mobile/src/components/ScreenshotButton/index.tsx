@@ -6,7 +6,7 @@ import { theme } from '../../config';
 import { styles } from './styles';
 
 export function ScreenshotButton(props: ScreenshotButtonProps) {
-  const { screenshot, onRemoveShot, onTakeShot } = props;
+  const { screenshot, isLoading = false, onRemoveShot, onTakeShot } = props;
 
   const { colors } = theme;
 
@@ -31,7 +31,11 @@ export function ScreenshotButton(props: ScreenshotButtonProps) {
   }
 
   return (
-    <TouchableOpacity activeOpacity={0.85} style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      style={[styles.container, { opacity: isLoading ? 0.5 : 1 }]}
+      onPress={async () => await handleOnPress()}
+    >
       {renderScreenshot}
     </TouchableOpacity>
   );

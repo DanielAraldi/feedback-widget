@@ -15,7 +15,7 @@ export function Form({ feedbackType }: FormProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity activeOpacity={0.85}>
+        <TouchableOpacity activeOpacity={0.5}>
           <ArrowLeft weight='bold' size={24} color={colors.textSecondary} />
         </TouchableOpacity>
 
