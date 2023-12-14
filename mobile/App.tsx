@@ -1,7 +1,9 @@
 import 'react-native-gesture-handler';
 
+import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   Inter_400Regular,
@@ -9,10 +11,9 @@ import {
   useFonts,
 } from '@expo-google-fonts/inter';
 
+import { getStatusBarHeight } from './src/utils';
 import { Widget } from './src/components';
 import { theme } from './src/config';
-import { useEffect } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const { colors } = theme;
 
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
+
+    paddingTop: getStatusBarHeight(),
 
     backgroundColor: colors.background,
   },
