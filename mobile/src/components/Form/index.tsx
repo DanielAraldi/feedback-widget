@@ -79,7 +79,11 @@ export function Form(props: FormProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity activeOpacity={0.5} onPress={onFeedbackCancelled}>
+        <TouchableOpacity
+          disabled={isSendingFeedback}
+          activeOpacity={0.5}
+          onPress={onFeedbackCancelled}
+        >
           <ArrowLeft weight='bold' size={24} color={colors.textSecondary} />
         </TouchableOpacity>
 
@@ -93,6 +97,7 @@ export function Form(props: FormProps) {
       <BottomSheetTextInput
         multiline
         autoCorrect={false}
+        editable={!isSendingFeedback}
         value={comment}
         style={styles.input}
         placeholder='Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o que está acontecendo...'
