@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // It must be "sqlite" when it's in development mode and "postgresql" when it's in production mode
+  provider = "sqlite" // It must be "sqlite" when it's in development mode and "postgresql" when it's in production mode
   url      = env("DATABASE_URL")
 }
 
@@ -14,7 +14,6 @@ model Feedback {
   type       String // Or @db.String(256)
   comment    String
   screenshot String? // When the field it have an "?" it's nullable
-  createdAt  DateTime
 
   @@map("feedbacks")
 }
