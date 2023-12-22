@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { FeedbackTypeKey } from '../../@types';
+
 import {
   FeedbackContentStep,
   FeedbackSuccessStep,
   FeedbackTypeStep,
 } from './Steps';
+import { FeedbackTypeKey } from '../../@types';
 
 export function WidgetForm() {
   const [feedbackSent, setFeedbackSent] = useState<boolean>(false);
