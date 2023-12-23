@@ -9,7 +9,7 @@ module.exports = function (api) {
         {
           moduleName: '@env',
           path: '.env',
-          allowlist: ['API_URL', 'API_PORT'],
+          allowlist: ['API_URL'],
           safe: true,
           allowUndefined: true,
           verbose: false,
